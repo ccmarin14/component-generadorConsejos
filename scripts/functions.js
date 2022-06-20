@@ -29,7 +29,7 @@ const changeLanguaje = () => {
         oldText = consejo.textContent;
         traduction(consejo.textContent);
         idConsejo.textContent = idConsejo.textContent.replace("ADVICE", "CONSEJO");
-        setTimeout(() => {consejo.innerHTML = resultText},1000);
+        setTimeout(() => {consejo.innerHTML = resultText},2000);
     } else {
         languaje = "EN"
         idConsejo.textContent = idConsejo.textContent.replace("CONSEJO", "ADVICE");
