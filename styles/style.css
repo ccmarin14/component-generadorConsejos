@@ -11,7 +11,8 @@
 
     /*Pictures*/
     --button: url("../images/icon-dice.svg");
-    --traslate: url("../images/spain-svgrepo-com.svg");
+    --spanish: url("../images/spain-svgrepo-com.svg");
+    --english: url("../images/flag-usa.svg");
 }
 
 body {
@@ -71,8 +72,15 @@ body {
     width: 34px;
     margin: 10px;
     border-radius: 17px;
-    background: no-repeat center/50% var(--traslate) var(--neonGreen);
     cursor: pointer;
+}
+
+.button__traslate--english {
+    background: no-repeat center/55% var(--spanish) var(--neonGreen);
+}
+
+.button__traslate--spanish {
+    background: no-repeat center/65% var(--english) var(--neonGreen);
 }
 
 .button__traslate:hover {

@@ -30,9 +30,13 @@ const changeLanguaje = () => {
         traduction(consejo.textContent);
         idConsejo.textContent = idConsejo.textContent.replace("ADVICE", "CONSEJO");
         setTimeout(() => {consejo.innerHTML = resultText},2000);
+        traslate.classList.remove("button__traslate--spanish");
+        traslate.classList.add("button__traslate--english");
     } else {
         languaje = "EN"
         idConsejo.textContent = idConsejo.textContent.replace("CONSEJO", "ADVICE");
         consejo.innerHTML = oldText;
+        traslate.classList.remove("button__traslate--english");
+        traslate.classList.add("button__traslate--spanish");
     }
 }
