@@ -1,0 +1,156 @@
+:root {
+    /*Primary*/
+    --lightCyan: hsl(193, 38%, 86%);
+    --neonGreen:hsl(150, 100%, 66%);
+ 
+
+    /*Neutral*/
+    --grayishBlue: hsl(217, 19%, 38%);
+    --darkGrayishBlue: hsl(217, 19%, 24%);
+    --darkBlue: hsl(218, 23%, 16%);
+
+    /*Pictures*/
+    --button: url("../images/icon-dice.svg");
+    --traslate: url("../images/spain-svgrepo-com.svg");
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 28px;
+    font-family: 'Manrope', sans-serif;
+    background-color: var(--darkBlue);
+}
+
+.container {
+    background-color: var(--darkGrayishBlue);
+    border-radius: 15px;
+    width: 550px;
+    padding: 25px 50px;
+}
+
+.title {
+    font-size: 12px;
+    color: var(--neonGreen);
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.data {
+    padding: 25px 0px;
+    text-align: center;
+    color: var(--lightCyan);
+}
+
+.separator{
+    margin-bottom: 25px;
+}
+
+.button__renew {
+    margin-top: -25px;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    background: no-repeat center center var(--button) var(--neonGreen);
+    cursor: pointer;
+}
+
+.button__traslate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 34px;
+    width: 34px;
+    margin: 10px;
+    border-radius: 17px;
+    background: no-repeat center/50% var(--traslate) var(--neonGreen);
+    cursor: pointer;
+}
+
+.button__traslate:hover {
+    box-shadow: 0px 0px 10px var(--neonGreen);
+}
+
+.button__renew:hover {
+    box-shadow: 0px 0px 10px var(--neonGreen);
+}
+
+@media (max-width: 980px) {
+    body {
+        display: block;
+        height: 100%;
+        padding: 30px 0;
+    }
+    
+    .dashboard {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .container__data {
+        margin: 0 0 20px 0;
+    }
+
+    .data__user {
+        display: flex;
+        flex-wrap:wrap;
+    }
+
+    .sub__container {
+        width: 100%;
+    }
+
+    .data__info {
+        height: 120px;
+        background-color: var(--blue);
+        padding-top: 30px;
+        padding-left: 20px;
+    }
+
+    .data__info p {
+        position: relative;
+        top: -110px;
+        right: -100px;
+    }
+
+    .data__info img {
+        height:80%;
+        border-radius: 40px;
+        border: 2px solid white;
+        margin-bottom: 40px;
+    }
+
+    .data__range button {
+        width: 33%;
+        text-align: center;
+        margin: 25px 0;
+
+    }
+
+    .sub__data {
+        height: 120px;
+        width: 100%;
+        padding: 20px 30px 0 30px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .sub__data .tittle {
+        margin-bottom: 10px;
+    }
+
+    .sub__data p {
+        display: inline;
+    }
+
+    .sub__data .last {
+        padding-top: 20px;
+        float: right;
+    }
+}
+
