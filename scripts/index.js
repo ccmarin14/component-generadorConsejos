@@ -7,7 +7,7 @@ let resultText;
 let oldText;
 let languaje = "EN";
 
-getAdvice(languaje);
-
-button.addEventListener("click",function(){getAdvice(languaje)});
+button.addEventListener("click",getAdvice);
 traslate.addEventListener("click",changeLanguaje);
+
+getAdvice();

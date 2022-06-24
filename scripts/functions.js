@@ -1,28 +1,30 @@
-const getAdvice = async(languaje) => {
+const getAdvice = async() => {
+    let DATA;
     await fetch('https://api.adviceslip.com/advice')
         .then((res) => res.json())
         .then((data) => {
-            if (languaje == "EN") {
-                idConsejo.innerHTML = `ADVICE # ${data.slip.id}`;
-                consejo.innerHTML = `"${data.slip.advice}"`;
-            } else if (languaje == "ES"){
-                idConsejo.innerHTML = `CONSEJO # ${data.slip.id}`;   
-                traduction(data.slip.advice)
-                    .then((result) => {
-                        consejo.innerHTML = result;
-                    })
-            }
+            DATA = data;
         });
+    if (languaje == "EN") {
+        title = "ADVICE"
+        consejo.innerHTML = `"${DATA.slip.advice}"`;
+    } else if (languaje == "ES"){
+        title = "CONSEJO"
+        consejo.innerHTML = await traduction(DATA.slip.advice);
+    }
+    idConsejo.innerHTML = `${title} # ${DATA.slip.id}`; 
 }
 
 const traduction = async(fromText) => {
     let result;
+    let DATA;
     let apiURL = `https://api.mymemory.translated.net/get?q=${fromText}&langpair=en|es`
     await fetch(apiURL)
         .then((res) => res.json())
         .then((data) => {
-            result = data.responseData.translatedText
+            DATA = data;
         });
+    result = await DATA.responseData.translatedText;
     return result;
 }
 
@@ -34,15 +36,25 @@ const changeLanguaje = () => {
         traduction(consejo.textContent)
         .then((result) => {
             consejo.innerHTML = result;
-            idConsejo.textContent = idConsejo.textContent.replace("ADVICE", "CONSEJO");
-            traslate.classList.remove("button__traslate--spanish");
-            traslate.classList.add("button__traslate--english");
+            toggleContext();
         })
     } else {
         languaje = "EN"
-        idConsejo.textContent = idConsejo.textContent.replace("CONSEJO", "ADVICE");
         consejo.innerHTML = oldText;
-        traslate.classList.remove("button__traslate--english");
-        traslate.classList.add("button__traslate--spanish");
+        toggleContext();
     }
+}
+
+const toggleContext = () => {
+    let org,dst;
+    if (languaje = "ES") {
+        org = "CONSEJO";
+        dst = "ADVICE";
+    } else {
+        org = "ADVICE";
+        dst = "CONSEJO";
+    }
+    idConsejo.textContent = idConsejo.textContent.replace(org, dst);
+    traslate.classList.toggle("button__traslate--spanish");
+    traslate.classList.toggle("button__traslate--english");
 }
