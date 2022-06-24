@@ -15,6 +15,11 @@ const getAdvice = async() => {
     idConsejo.innerHTML = `${title} # ${DATA.slip.id}`; 
 }
 
+//Función para asegurar el uso del API cada 2 segundos, por politicas de adviceslip, así debe ser.
+const returnAdvice = () => {
+    setTimeout(getAdvice, 2000)
+}
+
 const traduction = async(fromText) => {
     let result;
     let DATA;
