@@ -63,6 +63,7 @@ body {
     background: no-repeat center center var(--button) var(--neonGreen);
     cursor: pointer;
     transition: transform .8s ease-in-out;
+    user-select: none;
 }
 
 .button__traslate {
@@ -75,7 +76,6 @@ body {
     border-radius: 17px;
     cursor: pointer;
     user-select: none;
-    
 }
 
 .button__traslate--english {
