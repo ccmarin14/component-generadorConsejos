@@ -1,18 +1,28 @@
+const traduction = async(fromText) => {
+    let apiURL = `https://api.mymemory.translated.net/get?q=${fromText}&langpair=en|es`
+    let response = await fetch(apiURL)
+    let data = await response.json();
+    let result = data.responseData.translatedText;
+    
+    return result;
+}
+
 const getAdvice = async() => {
-    let DATA;
-    await fetch('https://api.adviceslip.com/advice')
-        .then((res) => res.json())
-        .then((data) => {
-            DATA = data;
-        });
+    let response = await fetch('https://api.adviceslip.com/advice');
+    let data = await response.json();
+
+    let title, advice;
     if (languaje == "EN") {
         title = "ADVICE"
-        consejo.innerHTML = `"${DATA.slip.advice}"`;
+        advice = `"${data.slip.advice}"`;
+        
     } else if (languaje == "ES"){
         title = "CONSEJO"
-        consejo.innerHTML = await traduction(DATA.slip.advice);
+        advice = await traduction(data.slip.advice);
     }
-    idConsejo.innerHTML = `${title} # ${DATA.slip.id}`; 
+    oldText = `"${data.slip.advice}"`;
+    consejo.innerHTML = advice;
+    idConsejo.innerHTML = `${title} #${data.slip.id}`;
 }
 
 //Función para asegurar el uso del API cada 2 segundos, por politicas de adviceslip, así debe ser.
@@ -20,24 +30,12 @@ const returnAdvice = () => {
     setTimeout(getAdvice, 2000)
 }
 
-const traduction = async(fromText) => {
-    let result;
-    let DATA;
-    let apiURL = `https://api.mymemory.translated.net/get?q=${fromText}&langpair=en|es`
-    await fetch(apiURL)
-        .then((res) => res.json())
-        .then((data) => {
-            DATA = data;
-        });
-    result = await DATA.responseData.translatedText;
-    return result;
-}
+
 
 const changeLanguaje = () => {
     traslate.classList.toggle("ES")
     if (traslate.classList.contains("ES")) {
-        languaje = "ES"
-        oldText = consejo.textContent;
+        languaje = "ES";
         traduction(consejo.textContent)
         .then((result) => {
             consejo.innerHTML = result;
@@ -52,7 +50,7 @@ const changeLanguaje = () => {
 
 const toggleContext = () => {
     let org,dst;
-    if (languaje = "ES") {
+    if (languaje != "ES") {
         org = "CONSEJO";
         dst = "ADVICE";
     } else {

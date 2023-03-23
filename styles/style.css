@@ -95,6 +95,17 @@ body {
     transform:rotate(360deg);
 }
 
+.attribution {
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 15px;
+    font-size: 11px; text-align: center;
+    color: var(--lightCyan)
+}
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
 @media (max-width: 980px) {
     .container {
         width: 400px;
